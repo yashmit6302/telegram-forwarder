@@ -13,7 +13,14 @@ API_HASH = os.environ.get("API_HASH")
 
 app = Flask(__name__)
 
-client = TelegramClient("render_forwarder", API_ID, API_HASH)
+from telethon.sessions import StringSession
+
+client = TelegramClient(
+    StringSession(os.environ.get("TG_SESSION")),
+    API_ID,
+    API_HASH
+)
+
 
 STATE = {
     "source": None,
@@ -142,5 +149,6 @@ async def start_bot():
 if __name__ == "__main__":
     threading.Thread(target=run_web).start()
     asyncio.run(start_bot())
+
 
 
