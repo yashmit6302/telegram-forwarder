@@ -143,12 +143,13 @@ async def run(event):
 # ---------------- START ----------------
 
 async def start_bot():
-    await client.start()
+    await client.connect()
     await client.run_until_disconnected()
 
 if __name__ == "__main__":
     threading.Thread(target=run_web).start()
     asyncio.run(start_bot())
+
 
 
 
