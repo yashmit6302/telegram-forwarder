@@ -4,8 +4,11 @@ import threading
 from flask import Flask
 from telethon import TelegramClient, events, errors
 
-API_ID = 123456
-API_HASH = "YOUR_API_HASH"
+import os
+
+API_ID = int(os.environ.get("38100046"))
+API_HASH = os.environ.get("6189265ecb7c20acf384fbe0702498c8")
+
 
 app = Flask(__name__)
 
@@ -138,3 +141,4 @@ async def start_bot():
 if __name__ == "__main__":
     threading.Thread(target=run_web).start()
     asyncio.run(start_bot())
+
